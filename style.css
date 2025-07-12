@@ -1,0 +1,397 @@
+/* Universal styles & Body */
+:root {
+    --primary-color: #ff6f61; /* A vibrant, warm red for accents */
+    --secondary-color: #4CAF50; /* Green for success/call to action */
+    --text-color: #333;
+    --light-gray: #f8f8f8;
+    --dark-gray: #555;
+    --border-color: #ddd;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+
+    /* Animation variables */
+    --fade-in-duration: 0.8s;
+    --slide-up-duration: 0.7s;
+    --scale-duration: 0.4s;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top */
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+/* Splash Screen */
+#splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    z-index: 1000;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+    padding: 20px; /* Add some padding for small screens */
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+#splash.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Main Container */
+.container {
+    background-color: white;
+    padding: 30px;
+    margin: 30px auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+    width: 90%;
+    box-sizing: border-box;
+
+    /* Initial hidden state for animation */
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity var(--fade-in-duration) ease-out, transform var(--slide-up-duration) ease-out;
+}
+
+/* Class to trigger the container animation */
+.container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header .logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    /* Logo animation on hover */
+    transition: transform 0.3s ease-in-out;
+}
+
+header .logo:hover {
+    transform: rotate(10deg) scale(1.05); /* Slight rotate and scale */
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.2em;
+    margin: 10px 0 20px;
+    letter-spacing: 0.5px;
+    /* Subtle animation for the heading */
+    animation: pulse 2s infinite alternate; /* More subtle */
+}
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        text-shadow: none;
+    }
+    to {
+        transform: scale(1.01);
+        text-shadow: 0 0 5px rgba(255, 111, 97, 0.4);
+    }
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow navigation items to wrap on smaller screens */
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover,
+nav a.active { /* You might add an 'active' class via JS for current page */
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px); /* Subtle lift on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+    line-height: 1.7;
+    text-align: justify; /* Justify text for a cleaner look */
+}
+
+/* Headings within content */
+h2 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    /* Fade-in for h2 - applied when .container.show is active */
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.container.show h2 {
+    animation: fadeInSlideUp 0.6s ease-out forwards;
+    animation-delay: 0.5s; /* Delay slightly after container appears */
+}
+
+/* Keyframes for fadeInSlideUp (can be reused) */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none; /* For form buttons */
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #e65c50; /* Slightly darker red */
+    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.telegramBtn {
+    background-color: #0088CC; /* Telegram blue */
+    margin-top: 20px;
+}
+
+.telegramBtn:hover {
+    background-color: #007bb5; /* Slightly darker Telegram blue */
+}
+
+/* Wish Buttons Section */
+.wish-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.wish-buttons .wish-btn {
+    flex: 1 1 200px; /* Allow buttons to grow and shrink, with a base of 200px */
+    max-width: 250px;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for buttons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wish-buttons .wish-btn:hover {
+    transform: scale(1.03); /* Slightly enlarge on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Stronger shadow */
+}
+
+/* Coming Soon Section */
+.coming-soon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    font-size: 1.1em;
+}
+
+.coming-soon span {
+    background-color: #e0e0e0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: var(--dark-gray);
+    font-weight: 500;
+    /* Animation for coming soon tags - applied when .container.show is active */
+    opacity: 0; /* Start hidden */
+    transform: scale(0.8); /* Start smaller */
+}
+
+.container.show .coming-soon span {
+    animation: popIn 0.5s ease-out forwards;
+}
+
+/* Assign animation delays to each span for staggered effect */
+.container.show .coming-soon span:nth-child(1) { animation-delay: 0.6s; }
+.container.show .coming-soon span:nth-child(2) { animation-delay: 0.7s; }
+.container.show .coming-soon span:nth-child(3) { animation-delay: 0.8s; }
+.container.show .coming-soon span:nth-child(4) { animation-delay: 0.9s; }
+/* Add more if you have more spans */
+
+/* Keyframes for popIn animation */
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Contact Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-family);
+    font-size: 1em;
+    box-sizing: border-box; /* Crucial for consistent width */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.4);
+}
+
+.contact-form .btn {
+    align-self: flex-start; /* Align button to the left */
+    width: auto; /* Allow button to size according to content */
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--dark-gray);
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+}
+
+/* Utility Class */
+/* .hidden should only be used for elements like splash screen to entirely remove them */
+.hidden {
+    display: none !important; /* Use !important to ensure it overrides other styles */
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .container {
+        margin: 15px auto;
+        padding: 20px;
+        width: 95%;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav a {
+        padding: 10px;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .wish-buttons .wish-btn {
+        flex: 1 1 100%; /* Stack buttons on small screens */
+        max-width: 100%;
+    }
+
+    .coming-soon span {
+        flex: 1 1 45%; /* Two items per row */
+        text-align: center;
+    }
+
+    .contact-form .btn {
+        width: 100%;
+        align-self: stretch; /* Make button full width */
+    }
+}
+
+@media (max-width: 400px) {
+    #splash h1 {
+        font-size: 1.5em;
+    }
+}
