@@ -1,51 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DevByHans Wishes 🎉</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevByHans Wishes - Your Portal for Personalized Greetings & Blessings</title>
+    <meta name="description" content="Generate heartfelt and personalized wishes for Birthdays, Anniversaries, and more. Share divine blessings with family and friends.">
+    <meta name="keywords" content="devbyhans wishes, personalized greetings, birthday wishes, anniversary wishes, Hindu festival wishes, online wishes, devotional greetings">
+    <meta name="author" content="DevByHans Group">
+    
+    <meta property="og:title" content="DevByHans Wishes - Divine & Personalized Greetings">
+    <meta property="og:description" content="Generate heartfelt wishes for Birthdays, Anniversaries, and more. Share divine blessings with family and friends.">
+    <meta property="og:image" content="assets/images/og-image.jpg"> <meta property="og:url" content="https://www.yourwebsite.com"> <meta property="og:type" content="website">
+    
+    <link rel="canonical" href="https://www.yourwebsite.com"> <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="splash">
-    <h1>✨ Welcome to DevByHans Wishes! ✨</h1>
-  </div>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <h1>Thanks for visiting DevByHans Wishes</h1>
+            <p>You are Most Welcome!</p>
+        </div>
+    </div>
 
-  <div class="container"> <header>
-      <img src="assets/logo.png" alt="DevByHans Logo" class="logo">
-      <h1>🎉 DevByHans Wishes 🎉</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/devbyhans_logo.png" alt="DevByHans Logo">
+                DevByHans
+            </a>
+            <nav>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <p>Aapke har pal ko banaye khaas — Pyari wishes ke saath! ❤️</p>
+    <main>
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Spread Joy & Blessings with Personalized Wishes</h2>
+                    <p>Craft heartfelt greetings for every special moment and divine occasion. Share warmth, devotion, and good fortune effortlessly.</p>
+                    <a href="#wish-sections" class="btn primary-btn scroll-to-btn">Start Creating Wishes!</a>
+                </div>
+            </div>
+            <div class="hero-bg-overlay"></div>
+        </section>
 
-    <h2>✨ Available Wishes</h2>
-    <div class="wish-buttons">
-      <a href="#" class="btn wish-btn">Anniversary Wishes</a>
-      <a href="#" class="btn wish-btn">Birthday Wishes</a>
-    </div>
+        <section id="wish-sections" class="wish-categories-section">
+            <div class="container">
+                <h2>Choose Your Special Wish</h2>
+                <div class="category-grid">
+                    <a href="birthday/birthday.html" class="category-card animate-hover birthday-card">
+                        <img src="assets/images/birthday_icon_placeholder.png" alt="Birthday Icon"> <h3>Birthday Wishes</h3>
+                        <p>Celebrate their special day with joy!</p>
+                    </a>
+                    <a href="anniversary/anniversary.html" class="category-card animate-hover anniversary-card">
+                        <img src="assets/images/anniversary_icon_placeholder.png" alt="Anniversary Icon"> <h3>Anniversary Wishes</h3>
+                        <p>Honor their journey of love.</p>
+                    </a>
 
-    <h2>🚀 Coming Soon</h2>
-    <div class="coming-soon">
-      <span>New Year</span>
-      <span>Diwali</span>
-      <span>Valentine</span>
-      <span>Holi</span>
-    </div>
-
-    <p>📢 Join our Telegram for updates & support:</p>
-    <a href="https://t.me/DevByHansWishes" target="_blank" class="btn telegramBtn">Join Telegram</a>
+                    <div class="category-card coming-soon-card">
+                        <img src="assets/images/diwali_icon_placeholder.png" alt="Diwali Icon"> <h3>Diwali Wishes</h3>
+                        <p>Lights of prosperity coming soon!</p>
+                        <span class="tag">Coming Soon</span>
+                    </div>
+                     <div class="category-card coming-soon-card">
+                        <img src="assets/images/holi_icon_placeholder.png" alt="Holi Icon"> <h3>Holi Wishes</h3>
+                        <p>Colors of joy coming soon!</p>
+                        <span class="tag">Coming Soon</span>
+                    </div>
+                     <div class="category-card coming-soon-card">
+                        <img src="assets/images/ganesh_icon_placeholder.png" alt="Ganesh Icon"> <h3>Ganesh Chaturthi Wishes</h3>
+                        <p>Blessings of Vignaharta soon!</p>
+                        <span class="tag">Coming Soon</span>
+                    </div>
+                     <div class="category-card coming-soon-card">
+                        <img src="assets/images/sawan_icon_placeholder.png" alt="Sawan Icon"> <h3>Sawan Somwar Wishes</h3>
+                        <p>Divine Shiva blessings soon!</p>
+                        <span class="tag">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-      Made with ❤️ by DevByHans | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a>
+        <div class="container">
+            <p>Made with ❤️ by DevByHans</p>
+            <div class="footer-links">
+                <a href="https://t.me/DevByHansWishes" target="_blank" rel="noopener noreferrer">Telegram Channel</a>
+            </div>
+        </div>
     </footer>
-  </div>
-</body>
+
+    <script src="index.js"></script> </body>
 </html>

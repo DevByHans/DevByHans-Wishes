@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Wishes - Generate Personalized Wishes</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/DevByHans.png" alt="DevByHans Logo">
+                    <span>DevByHans</span>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="../terms.html">Terms & Conditions</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Anniversary Wish Generator</h1>
+
+            <div class="input-form">
+                <div class="form-group">
+                    <label for="recipientName">Couple's Names (e.g., Ram & Sita):</label>
+                    <input type="text" id="recipientName" name="recipientName" placeholder="e.g., Ram & Sita" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="anniversaryDate">Anniversary Date:</label>
+                    <input type="date" id="anniversaryDate" name="anniversaryDate" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customMessage">Custom Message:</label>
+                    <textarea id="customMessage" name="customMessage" rows="4" placeholder="Add a personal touch to your wish..." class="form-textarea"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userName">Your Name:</label>
+                    <input type="text" id="userName" name="userName" placeholder="Your Name" class="form-input" required>
+                </div>
+                
+                <button id="generateWishBtn" class="btn primary-btn">Generate Wish</button>
+            </div>
+
+            <div id="generatedWishCard" class="wish-card">
+                <p class="wish-text"></p>
+                <p class="signature"></p>
+                <div class="wish-actions">
+                    <button id="shareWhatsappBtn"><img src="../assets/whatsapp.png" alt="WhatsApp">Share on WhatsApp</button>
+                    <button id="copyLinkBtn"><img src="../assets/copy.png" alt="Copy">Copy Wish</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Made with ❤️ by DevByHans</p>
+            <div class="footer-links">
+                <a href="https://t.me/DevByHans" target="_blank" rel="noopener noreferrer">Telegram Channel</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../index.js"></script>
+    <script src="anniversary.js"></script>
+</body>
+</html>

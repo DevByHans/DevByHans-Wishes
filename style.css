@@ -1,397 +1,758 @@
-/* Universal styles & Body */
+/* Basic Resets & Global Variables */
 :root {
-    --primary-color: #ff6f61; /* A vibrant, warm red for accents */
-    --secondary-color: #4CAF50; /* Green for success/call to action */
-    --text-color: #333;
-    --light-gray: #f8f8f8;
-    --dark-gray: #555;
-    --border-color: #ddd;
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --border-radius: 8px;
+    --primary-color: #ff477e; /* Bright Pink/Love theme */
+    --secondary-color: #d24370; /* Darker Pink/Red */
+    --accent-color: #ffd700; /* Gold */
+    --light-bg: #e7c26cfd; /* Very light pink/cream */
+    --dark-text: #333;
+    --light-text: #fff;
+    --grey-text: #666;
 
-    /* Animation variables */
-    --fade-in-duration: 0.8s;
-    --slide-up-duration: 0.7s;
-    --scale-duration: 0.4s;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-family);
-    margin: 0;
-    padding: 0;
-    background-color: var(--light-gray);
-    color: var(--text-color);
+    font-family: var(--font-body);
     line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align content to the top */
-    min-height: 100vh;
-    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+    color: var(--dark-text);
+    background-color: var(--light-bg);
+    overflow-x: hidden;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--secondary-color);
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: clamp(2em, 4vw, 2.5em);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ... (existing styles) ... */
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Ensure no underline for links styled as buttons */
+    text-align: center;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.primary-btn {
+    background-color: var(--primary-color); /* Pink */
+    color: white; /* <-- ADD THIS LINE */
+    box-shadow: 0 4px 10px rgba(255, 71, 126, 0.3);
+}
+
+.primary-btn:hover {
+    background-color: #e6326c; /* Slightly darker pink */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 71, 126, 0.4);
+}
+
+
+
 /* Splash Screen */
-#splash {
+#splash-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-color);
-    color: white;
+    background: linear-gradient(135deg, #fffddd, #bb8e2e); /* Soft, inviting pink gradient */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
-    font-weight: bold;
-    text-align: center;
     z-index: 1000;
-    transition: opacity 1s ease-out, visibility 1s ease-out;
-    padding: 20px; /* Add some padding for small screens */
-    box-sizing: border-box; /* Include padding in width/height */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.7s ease-out, visibility 0.7s ease-out;
+    color: var(--secondary-color);
+    font-family: var(--font-heading);
+    text-align: center;
 }
 
-#splash.hidden {
+#splash-screen.fade-out {
     opacity: 0;
     visibility: hidden;
 }
 
-/* Main Container */
-.container {
-    background-color: white;
-    padding: 30px;
-    margin: 30px auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    max-width: 800px;
-    width: 90%;
-    box-sizing: border-box;
-
-    /* Initial hidden state for animation */
-    opacity: 0;
-    transform: translateY(20px); /* Start slightly below */
-    transition: opacity var(--fade-in-duration) ease-out, transform var(--slide-up-duration) ease-out;
+.splash-content h1 {
+    font-size: clamp(1.8em, 4vw, 3em);
+    margin-bottom: 10px;
+    animation: fadeInScale 1s ease-out forwards;
 }
 
-/* Class to trigger the container animation */
-.container.show {
-    opacity: 1;
-    transform: translateY(0);
+.splash-content p {
+    font-size: clamp(1em, 2.5vw, 1.4em);
+    animation: fadeInScale 1.2s ease-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* Header */
 header {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 500;
 }
 
-header .logo {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    /* Logo animation on hover */
-    transition: transform 0.3s ease-in-out;
-}
-
-header .logo:hover {
-    transform: rotate(10deg) scale(1.05); /* Slight rotate and scale */
-}
-
-header h1 {
-    color: var(--primary-color);
-    font-size: 2.2em;
-    margin: 10px 0 20px;
-    letter-spacing: 0.5px;
-    /* Subtle animation for the heading */
-    animation: pulse 2s infinite alternate; /* More subtle */
-}
-
-/* Keyframes for pulse animation */
-@keyframes pulse {
-    from {
-        transform: scale(1);
-        text-shadow: none;
-    }
-    to {
-        transform: scale(1.01);
-        text-shadow: 0 0 5px rgba(255, 111, 97, 0.4);
-    }
-}
-
-/* Navigation */
-nav {
+header .container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Allow navigation items to wrap on smaller screens */
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav a {
-    text-decoration: none;
-    color: var(--dark-gray);
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-}
-
-nav a:hover,
-nav a.active { /* You might add an 'active' class via JS for current page */
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px); /* Subtle lift on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
-}
-
-/* Paragraphs */
-p {
-    margin-bottom: 15px;
-    font-size: 1.05em;
-    line-height: 1.7;
-    text-align: justify; /* Justify text for a cleaner look */
-}
-
-/* Headings within content */
-h2 {
-    color: var(--primary-color);
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-heading);
     font-size: 1.8em;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    text-align: center;
-    /* Fade-in for h2 - applied when .container.show is active */
-    opacity: 0;
-    transform: translateY(10px);
+    font-weight: 700;
+    color: var(--light-text);
 }
 
-.container.show h2 {
-    animation: fadeInSlideUp 0.6s ease-out forwards;
-    animation-delay: 0.5s; /* Delay slightly after container appears */
+.logo img {
+    height: 40px;
+    width: auto;
+    margin-right: 10px;
 }
 
-/* Keyframes for fadeInSlideUp (can be reused) */
-@keyframes fadeInSlideUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+nav ul {
+    list-style: none;
+    display: flex;
 }
 
-/* Buttons */
-.btn {
-    display: inline-block;
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--light-text);
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 5px; /* Space for underline */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
     background-color: var(--primary-color);
-    color: white;
-    padding: 12px 25px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    border: none; /* For form buttons */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
     cursor: pointer;
+    padding: 10px;
+}
+
+.nav-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--light-text);
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('assets/images/hero-background.jpg') no-repeat center center/cover; /* Placeholder hero background */
+    color: var(--light-text);
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg-overlay { /* Dim overlay for text readability */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    animation: fadeInSlideUp 1s ease-out forwards;
+}
+
+.hero-content h2 {
+    color: var(--light-text);
+    font-size: clamp(2.5em, 5vw, 3.8em);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: clamp(1.1em, 2vw, 1.4em);
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+@keyframes fadeInSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Wishing Categories Section */
+.wish-categories-section {
+    padding: 80px 0;
+    background-color: var(--light-bg);
     text-align: center;
 }
 
-.btn:hover {
-    background-color: #e65c50; /* Slightly darker red */
-    transform: translateY(-3px) scale(1.02); /* More pronounced lift and slight scale */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-}
-
-.telegramBtn {
-    background-color: #0088CC; /* Telegram blue */
-    margin-top: 20px;
-}
-
-.telegramBtn:hover {
-    background-color: #007bb5; /* Slightly darker Telegram blue */
-}
-
-/* Wish Buttons Section */
-.wish-buttons {
-    display: flex;
-    flex-wrap: wrap;
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-.wish-buttons .wish-btn {
-    flex: 1 1 200px; /* Allow buttons to grow and shrink, with a base of 200px */
-    max-width: 250px;
-    padding: 15px 20px;
-    font-size: 1.1em;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for buttons */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.wish-buttons .wish-btn:hover {
-    transform: scale(1.03); /* Slightly enlarge on hover */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Stronger shadow */
-}
-
-/* Coming Soon Section */
-.coming-soon {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    font-size: 1.1em;
-}
-
-.coming-soon span {
-    background-color: #e0e0e0;
-    padding: 8px 15px;
-    border-radius: 20px;
-    color: var(--dark-gray);
-    font-weight: 500;
-    /* Animation for coming soon tags - applied when .container.show is active */
-    opacity: 0; /* Start hidden */
-    transform: scale(0.8); /* Start smaller */
-}
-
-.container.show .coming-soon span {
-    animation: popIn 0.5s ease-out forwards;
-}
-
-/* Assign animation delays to each span for staggered effect */
-.container.show .coming-soon span:nth-child(1) { animation-delay: 0.6s; }
-.container.show .coming-soon span:nth-child(2) { animation-delay: 0.7s; }
-.container.show .coming-soon span:nth-child(3) { animation-delay: 0.8s; }
-.container.show .coming-soon span:nth-child(4) { animation-delay: 0.9s; }
-/* Add more if you have more spans */
-
-/* Keyframes for popIn animation */
-@keyframes popIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Contact Form */
-.contact-form {
+.category-card {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 25px;
-    margin-bottom: 30px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: var(--light-text);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border-color);
+.category-card.animate-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.category-card img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.category-card h3 {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.category-card p {
+    font-size: 0.95em;
+    color: var(--grey-text);
+}
+
+.category-card.coming-soon-card {
+    background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none; /* No hover effect for disabled */
+}
+
+.category-card.coming-soon-card .tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 5px 12px;
     border-radius: 5px;
-    font-family: var(--font-family);
-    font-size: 1em;
-    box-sizing: border-box; /* Crucial for consistent width */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    animation: pulse 1.5s infinite ease-in-out;
 }
 
-.contact-form textarea {
-    min-height: 120px;
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* --- Professional Form Styling --- */
+.input-form {
+    background-color: var(--light-text);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+}
+
+.input-form .form-group {
+    margin-bottom: 0; /* Override default paragraph margin */
+}
+
+.input-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--secondary-color); /* Matches headings */
+    font-size: 1.05em;
+}
+
+.input-form .form-input,
+.input-form .form-textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    color: var(--dark-text);
+    background-color: #f8f8f8;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.input-form .form-input:focus,
+.input-form .form-textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 71, 126, 0.2); /* Primary color alpha */
+    background-color: var(--light-text);
+    outline: none;
+}
+
+.input-form .form-textarea {
     resize: vertical; /* Allow vertical resizing */
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.4);
+.input-form .btn {
+    align-self: center; /* Center the button */
+    padding: 12px 35px;
+    font-size: 1.1em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 10px; /* Add some space above the button */
 }
 
-.contact-form .btn {
-    align-self: flex-start; /* Align button to the left */
-    width: auto; /* Allow button to size according to content */
-    margin-top: 10px;
+/* --- Wish Card Styling --- */
+.wish-card {
+    background: linear-gradient(145deg, #fce4ec, #f8bbd0); /* Light pink gradient */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    margin-top: 40px;
+    position: relative; /* For animations if needed */
 }
+
+.wish-card.visible { /* Class added by JS when wish is generated */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wish-card .wish-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.2em, 2.5vw, 1.8em);
+    line-height: 1.7;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    white-space: pre-wrap; /* Preserve line breaks from textarea */
+}
+
+.wish-card .signature {
+    font-family: var(--font-body);
+    font-size: clamp(0.9em, 1.5vw, 1.1em);
+    color: var(--primary-color);
+    font-weight: 600;
+    text-align: right;
+    display: block; /* Ensures it takes full width for right align */
+    margin-top: 20px;
+}
+
+/* Share & Copy Buttons */
+.wish-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.wish-actions button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    font-size: 1.05em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    color: white;
+}
+
+.wish-actions button img {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 0;
+    filter: brightness(0) invert(1); /* Make icon white */
+}
+
+#shareWhatsappBtn {
+    background-color: #25d366; /* WhatsApp Green */
+}
+
+#shareWhatsappBtn:hover {
+    background-color: #1da851;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+#copyLinkBtn {
+    background-color: #007bff; /* Blue for Copy */
+}
+
+#copyLinkBtn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
 
 /* Footer */
 footer {
+    background-color: var(--secondary-color);
+    color: var(--light-text);
+    padding: 25px 0;
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
-    color: var(--dark-gray);
     font-size: 0.9em;
 }
 
-footer a {
-    color: var(--dark-gray);
-    text-decoration: none;
-    margin: 0 5px;
-    transition: color 0.3s ease;
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-footer a:hover {
-    color: var(--primary-color);
+/* --- Footer Link Visibility Fix --- */
+footer .footer-links a {
+    color: var(--accent-color); /* Changed to Gold for visibility */
+    margin: 0 10px;
+    font-weight: 600; /* Made it bolder */
+    text-decoration: underline; /* Added underline for clarity */
+    text-underline-offset: 3px; /* Space between text and underline */
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
 }
 
-/* Utility Class */
-/* .hidden should only be used for elements like splash screen to entirely remove them */
-.hidden {
-    display: none !important; /* Use !important to ensure it overrides other styles */
-    visibility: hidden;
-    opacity: 0;
+footer .footer-links a:hover {
+    color: var(--light-text); /* White on hover */
+    text-decoration-color: var(--light-text); /* Underline also turns white */
 }
 
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-    .container {
-        margin: 15px auto;
-        padding: 20px;
-        width: 95%;
+/* Static Pages (About, Privacy, Terms, Contact) Common Styles */
+.static-page-main, .contact-main {
+    padding: 80px 0;
+    min-height: 70vh;
+    background-color: var(--light-bg);
+}
+
+.static-page-main .container, .contact-main .container {
+    background-color: var(--light-text);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.static-page-main h1, .contact-main h1 {
+    font-size: clamp(2em, 4vw, 3em);
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.static-page-main p, .contact-main p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    color: var(--dark-text);
+}
+
+/* Contact Form Specifics */
+.contact-main form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-main .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.contact-main .form-group input[type="text"],
+.contact-main .form-group input[type="email"],
+.contact-main .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-main .form-group input:focus,
+.contact-main .form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 71, 126, 0.2); /* Primary color alpha */
+}
+
+.contact-main button[type="submit"] {
+    width: auto;
+    align-self: center;
+    padding: 12px 40px;
+    font-size: 1.1em;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-main button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+#formStatusMessage {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+}
+
+#formStatusMessage.hidden {
+    display: none;
+}
+
+#formStatusMessage.success-message {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green */
+    border: 1px solid #c3e6cb;
+}
+
+#formStatusMessage.error-message {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red */
+    border: 1px solid #f5c6cb;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header .container {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    header h1 {
-        font-size: 1.8em;
+    .logo {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 15px;
     }
 
-    nav {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--secondary-color);
+        padding-top: 10px;
+    }
+
+    nav ul.nav-menu.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .hero-section {
+        padding: 80px 15px;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .category-card {
+        width: 90%; /* Max width for cards */
+        margin: 0 auto;
+    }
+
+    /* Adjust wish card on smaller screens */
+    .wish-card {
+        padding: 25px;
+    }
+    .wish-card .wish-text {
+        font-size: 1.1em;
+    }
+    .wish-actions {
         flex-direction: column;
         gap: 10px;
     }
-
-    nav a {
-        padding: 10px;
-        width: 80%;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .wish-buttons .wish-btn {
-        flex: 1 1 100%; /* Stack buttons on small screens */
-        max-width: 100%;
-    }
-
-    .coming-soon span {
-        flex: 1 1 45%; /* Two items per row */
-        text-align: center;
-    }
-
-    .contact-form .btn {
+    .wish-actions button {
         width: 100%;
-        align-self: stretch; /* Make button full width */
+        max-width: 280px; /* Constrain width for column layout */
+    }
+    .input-form {
+        padding: 20px;
+        gap: 15px;
     }
 }
 
-@media (max-width: 400px) {
-    #splash h1 {
+@media (max-width: 480px) {
+    .logo {
         font-size: 1.5em;
     }
+    .logo img {
+        height: 30px;
+    }
+    .splash-content h1 {
+        font-size: 1.5em;
+    }
+    .splash-content p {
+        font-size: 0.9em;
+    }
+    .primary-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .static-page-main .container, .contact-main .container {
+        padding: 25px;
+    }
+    .static-page-main h1, .contact-main h1 {
+        font-size: 1.8em;
+    }
+    /* Smaller wish card and form inputs */
+    .wish-card .wish-text {
+        font-size: 1em;
+    }
+    .input-form .btn {
+        padding: 10px 25px;
+        font-size: 1em;
+    }
 }
+
+/* Optional: Particle effect for hero-section (add to .hero-bg-overlay for background) */
+.hero-bg-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.3)"/></svg>');
+    background-size: 20px 20px;
+    animation: bg-move 20s linear infinite;
+}
+
+@keyframes bg-move {
+    from { background-position: 0 0; }
+    to { background-position: 200px 200px; }
+}
+/* ... (existing styles) ... */
+

@@ -1,0 +1,76 @@
+/* Anniversary specific background and theme adjustments */
+body.anniversary-theme .wish-generator-main {
+    background-image: url('anniversary-bg.jpg'); /* Background specific to Anniversary */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+}
+
+/* Adjust colors for anniversary theme */
+body.anniversary-theme .wish-generator-main .container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for content */
+}
+
+body.anniversary-theme h1,
+body.anniversary-theme .input-form label {
+    color: var(--secondary-color); /* Darker pink/red for headings/labels */
+}
+
+body.anniversary-theme .input-form button {
+    background-color: var(--primary-color); /* Bright pink/red button */
+}
+
+body.anniversary-theme .input-form button:hover {
+    background-color: var(--secondary-color); /* Darker pink/red on hover */
+}
+
+body.anniversary-theme .wish-card {
+    border: 2px solid var(--primary-color); /* Pink/red border for card */
+}
+
+body.anniversary-theme .wish-card .wish-text {
+    color: var(--dark-text); /* Standard text color */
+}
+
+body.anniversary-theme .wish-card .signature {
+    color: var(--primary-color); /* Pink/red signature */
+}
+
+/* WhatsApp and Copy Link buttons (styles are mostly global in style.css, but ensure consistent application) */
+/* The styles for .wish-actions, #shareWhatsappBtn, #copyLinkBtn are defined in style.css for reusability.
+   You might add specific overrides here if anniversary buttons need different colors. */
+
+/* Mobile adjustments specific to wish generator (inherited from style.css but here for clarity) */
+@media (max-width: 768px) {
+    body.wish-page-body .wish-generator-main .container {
+        padding: 30px 20px;
+        max-width: 95%;
+    }
+    body.wish-page-body h1 {
+        font-size: 2em;
+    }
+    .wish-card .wish-text {
+        font-size: 1.1em;
+    }
+    .wish-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .wish-actions button {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    body.wish-page-body h1 {
+        font-size: 1.8em;
+    }
+    .wish-card .wish-text {
+        font-size: 1em;
+    }
+    .input-form button {
+        padding: 10px 30px;
+        font-size: 1em;
+    }
+}
