@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/sawan",
+      "destination": "/sawan/sawan.html"
+    },
+    {
+      "source": "/birthday",
+      "destination": "/birthday/birthday.html"
+    },
+    {
+      "source": "/anniversary",
+      "destination": "/anniversary/anniversary.html"
+    }
+  ]
+}
