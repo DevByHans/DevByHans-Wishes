@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const whatsappShareBtn = document.getElementById('whatsappShareBtn');
     const copyWishBtn = document.getElementById('copyWishBtn');
     const createAnotherBtn = document.getElementById('createAnotherBtn');
+    const shareUrl = "https://dev-by-hans-wishes.vercel.app/sawan";
 
     // --- Data (Hindi Wishes) ---
     const wishes = [
