@@ -1,0 +1,591 @@
+/* General Body and Background */
+body {
+    margin: 0;
+    font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+    text-align: center;
+    color: white;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+    background: url('assets/images/shivlin.png') no-repeat center center fixed; /* Corrected path assuming sawan.css is in sawan/ */
+    background-size: cover;
+    animation: backgroundPan 60s linear infinite;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes footer to bottom */
+}
+
+@keyframes backgroundPan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Header */
+header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 20;
+    position: sticky; /* Makes header stick to top */
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Keep this max-width for overall header content */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.1);
+    padding: 5px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #ffeb3b;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #ffeb3b;
+    transform: translateY(-2px);
+}
+
+
+/* Loader Screen */
+#loader-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 2, 2, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2.5em;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+#loader-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader-spinner {
+    border: 8px solid rgba(65, 48, 48, 0.3);
+    border-top: 8px solid #ffeb3b; /* Golden spinner */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Main Content Container */
+.container {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 800px; /* Keep this max-width for the content area */
+    margin: 20px auto; /* Added margin-top to separate from header, and auto for horizontal centering */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This will center items horizontally within the container */
+    position: relative;
+    z-index: 10;
+    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+    justify-content: center; /* Vertically center content */
+}
+
+.main-heading {
+    font-size: 3.5em;
+    color: #ffeb3b;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 10px rgba(79, 73, 73, 0.7), 0 0 15px rgba(255,235,59,0.5);
+}
+
+/* Card Styles (used for countdown, input, and wish cards) */
+.card {
+    background: rgba(49, 43, 43, 0.7);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Re-added a simple box-shadow as '...' was placeholder */
+    max-width: 500px; /* Max width for the cards */
+    width: 100%; /* Take full width up to max-width */
+    margin: 0 auto 30px auto; /* Center horizontally with auto margins, add bottom margin */
+    /* REMOVED: position: relative; and transform: translate(-50%, 0); 
+       These were causing the offset and are not needed if parent (.container) 
+       is handling alignment and card has margin: auto. */
+    transition: all 0.3s ease; /* Smooth transition for visibility changes */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content inside the card */
+    color: #e0f2f7; /* Light text color for contrast */
+    font-size: 1.1em;
+    line-height: 1.6;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box; /* Include padding in width */
+}
+
+/* Default hidden state for sections controlled by JS */
+.card.hidden {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    pointer-events: none; /* Disable interaction when hidden */
+    overflow: hidden; /* Prevent content from overflowing during transition */
+}
+
+/* Specific visibility class for active card */
+.card.visible {
+    opacity: 1;
+    visibility: visible;
+    height: auto; /* Take natural height */
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px; /* Restore bottom margin */
+    pointer-events: auto; /* Enable interaction */
+    /* REMOVED transform here as well. Let margin:auto handle centering */
+}
+
+/* Countdown Card - Always visible initially, not managed by showSection */
+#countdown-card {
+    /* No special positioning needed here, .card handles it. */
+    margin-bottom: 30px; /* Standard spacing */
+}
+
+/* Input Section - Initially visible after loader, then managed by showSection */
+#input-section {
+    /* No default hidden class here in CSS, JS handles its initial visibility after loader */
+    /* No special positioning needed here, .card handles it. */
+}
+
+/* REMOVED the #wish-card absolute positioning
+   If wish-card needs to replace input-section in the flow,
+   it should use the same centering as .card and be shown/hidden by JS. */
+/* If #wish-card *must* be an overlay (which is not indicated by UX), then:
+#wish-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    margin: 0; // Override card margin
+}
+#wish-card.visible {
+    // inherits from #wish-card
+}
+*/
+
+
+.countdown-card h2 {
+    font-size: 1.8em;
+    color: #e0f2f7;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #ffeb3b;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.countdown-item small {
+    font-size: 0.5em;
+    color: #e0f2f7;
+    margin-top: 5px;
+}
+
+/* Input Section Styles */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left; /* Keep labels/inputs aligned left within the card */
+    width: 100%; /* Ensure input group takes full width within card */
+}
+
+.input-group label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #e0f2f7;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: calc(100% - 24px); /* Account for padding + border */
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #333;
+    font-size: 1em;
+    box-shadow: inset 0 1px 5px rgba(0,0,0,0.1);
+    margin-top: 5px;
+}
+
+input[type="file"] {
+    padding: 10px;
+}
+
+input[type="text"]::placeholder {
+    color: #777;
+}
+
+.image-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    margin-top: 15px;
+    margin-left: auto; /* Center the image preview */
+    margin-right: auto; /* Center the image preview */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+/* Wish Card (Generated) Styles */
+.wish-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.generated-user-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid #ffeb3b;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 0 15px rgba(255,235,59,0.7);
+}
+
+.generated-sender-name {
+    font-size: 1.5em;
+    color: #ffeb3b;
+    margin-top: 0;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.wish-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #e0f2f7;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Allow text to take available space */
+}
+
+/* Buttons */
+button {
+    font-size: 1.1em;
+    padding: 12px 25px;
+    /* margin: 10px auto; This makes button block level and centers it, but flexbox on parent is often better */
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-decoration: none;
+    /* display: block; and width: fit-content; for centering are now handled by flex on .card */
+    max-width: 90%; /* Max width for responsiveness */
+}
+
+#generateWishBtn {
+    background-color: #ffeb3b;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(255,235,59,0.4);
+    margin-top: 20px; /* Add margin-top for spacing */
+}
+
+#generateWishBtn:hover {
+    background-color: #ffd700;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(255,235,59,0.6);
+}
+
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.share-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-grow: 1;
+    max-width: 220px;
+    padding: 12px 20px; /* Ensure consistent padding */
+}
+
+.share-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.whatsapp-btn {
+    background-color: #25D366;
+    border-color: #25D366;
+}
+.whatsapp-btn:hover {
+    background-color: #1DA851;
+    border-color: #1DA851;
+}
+
+.copy-btn {
+    /* Uses default .share-btn styling */
+}
+
+.generate-new-btn {
+    background-color: #007bff; /* A blue color */
+    color: white;
+    margin-top: 20px; /* Consistent spacing */
+}
+
+.generate-new-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.telegram-button {
+    background-color: #0088CC;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Add margin to bottom as well */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 5px 15px rgba(0,136,204,0.4);
+    transition: all 0.3s ease;
+}
+
+.telegram-button:hover {
+    background-color: #007bb6;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,136,204,0.6);
+}
+
+
+/* Footer */
+footer {
+    background: rgba(0,0,0,0.6);
+    padding: 15px 0;
+    margin-top: auto; /* Pushes footer to bottom */
+    width: 100%;
+    z-index: 20;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+/* Animations */
+.belpatra-container, .diya-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.belpatra {
+    position: absolute;
+    font-size: 30px;
+    color: #4CAF50; /* Green color for belpatra */
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    animation: fallEmoji 8s linear infinite;
+    opacity: 0;
+}
+
+@keyframes fallEmoji {
+    0% { transform: translateY(-50px) translateX(0px) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    100% { transform: translateY(100vh) translateX(var(--fall-x-offset)) rotate(360deg); opacity: 0; }
+}
+
+/* Diya Styling - assuming diya.png is available */
+.diya {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('../assets/images/diya.png') no-repeat center center; /* Corrected path */
+    background-size: contain;
+    filter: drop-shadow(0 0 8px #ff9800);
+    animation: floatDiya 15s ease-in-out infinite alternate;
+    opacity: 0;
+}
+
+@keyframes floatDiya {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    5% { opacity: 1; }
+    50% { transform: translateY(-20px) translateX(20px); }
+    100% { transform: translateY(0) translateX(-20px); opacity: 0; }
+}
+
+
+/* Utility Classes */
+.hidden {
+    display: none !important; /* Forces element out of flow and hides it */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+    }
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 5px 15px;
+    }
+    .main-heading {
+        font-size: 2.5em;
+    }
+    .card {
+        padding: 20px;
+    }
+    .countdown-item {
+        font-size: 1.8em;
+    }
+    input[type="text"],
+    input[type="file"],
+    button {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .share-btn {
+        flex-basis: 100%; /* Stack share buttons on small screens */
+        max-width: 100%;
+    }
+    .generated-user-photo {
+        width: 80px;
+        height: 80px;
+    }
+    .generated-sender-name {
+        font-size: 1.3em;
+    }
+    .wish-text {
+        font-size: 1em;
+    }
+    .telegram-button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-heading {
+        font-size: 2em;
+    }
+    .countdown-item {
+        font-size: 1.5em;
+    }
+    .card {
+        padding: 15px;
+    }
+}

@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anniversary Wishes - Generate Personalized Wishes</title>
+    <title>Anniversary Wishes - DevByHans 🙏</title> <meta name="description" content="Generate personalized anniversary wishes for couples. Create heartfelt greetings for any milestone with DevByHans."/>
+    <meta name="keywords" content="anniversary wishes, personalized anniversary, marriage anniversary, happy anniversary, couple wishes, DevByHans, wishes, generate wish"/>
+
+    <meta property="og:title" content="Anniversary Wishes - DevByHans 🙏"/>
+    <meta property="og:description" content="Generate personalized anniversary wishes for couples. Create heartfelt greetings for any milestone with DevByHans."/>
+    <meta property="og:image" content="https://dev-by-hans-wishes.vercel.app/assets/images/og-anniversary.jpg"/> <meta property="og:url" content="https://dev-by-hans-wishes.vercel.app/anniversary/anniversary.html"/> <meta property="og:type" content="website"/>
+
+    <link rel="canonical" href="https://dev-by-hans-wishes.vercel.app/anniversary/anniversary.html"/> <link rel="icon" href="https://dev-by-hans-wishes.vercel.app/assets/images/favicon.ico" type="image/x-icon"/> <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" as="style">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <header>
         <div class="container header-container">
             <div class="logo">
-                <a href="../index.html">
-                    <img src="../assets/DevByHans.png" alt="DevByHans Logo">
-                    <span>DevByHans</span>
+                <a href="https://dev-by-hans-wishes.vercel.app/index.html"> <img src="../assets/images/devbyhans_logo.png" alt="DevByHans Logo"> <span>DevByHans</span>
                 </a>
             </div>
             <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../about.html">About Us</a></li>
-                    <li><a href="../terms.html">Terms & Conditions</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
-                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="nav-menu"> <li><a href="https://dev-by-hans-wishes.vercel.app/index.html">Home</a></li> <li><a href="https://dev-by-hans-wishes.vercel.app/about.html">About Us</a></li> <li><a href="https://dev-by-hans-wishes.vercel.app/privacy.html">Privacy Policy</a></li> <li><a href="https://dev-by-hans-wishes.vercel.app/terms.html">Terms & Conditions</a></li> <li><a href="https://dev-by-hans-wishes.vercel.app/contact.html">Contact</a></li> </ul>
             </nav>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
-        </div>
     </header>
 
     <main>
@@ -60,27 +64,24 @@
                 <button id="generateWishBtn" class="btn primary-btn">Generate Wish</button>
             </div>
 
-            <div id="generatedWishCard" class="wish-card">
-                <p class="wish-text"></p>
+            <div id="generatedWishCard" class="wish-card hidden"> <p class="wish-text"></p>
                 <p class="signature"></p>
                 <div class="wish-actions">
-                    <button id="shareWhatsappBtn"><img src="../assets/whatsapp.png" alt="WhatsApp">Share on WhatsApp</button>
-                    <button id="copyLinkBtn"><img src="../assets/copy.png" alt="Copy">Copy Wish</button>
-                </div>
+                    <button id="shareWhatsappBtn"><img src="../assets/images/whatsapp.png" alt="WhatsApp">Share on WhatsApp</button> <button id="copyLinkBtn"><img src="../assets/images/copy.png" alt="Copy">Copy Wish</button> </div>
+                <button id="createAnotherWishBtn" class="btn secondary-btn" style="margin-top: 15px;">Generate Another Wish</button>
             </div>
         </div>
     </main>
 
     <footer>
         <div class="container footer-content">
-            <p>&copy; 2025 Made with ❤️ by DevByHans</p>
+            <p>&copy; 2025 Made by DevByHans ❤️</p>
             <div class="footer-links">
-                <a href="https://t.me/DevByHans" target="_blank" rel="noopener noreferrer">Telegram Channel</a>
-            </div>
+                <a href="https://t.me/DevByHansWishes" target="_blank" rel="noopener noreferrer">Telegram Channel</a> </div>
         </div>
     </footer>
 
-    <script src="../index.js"></script>
+    <script src="../index.js"></script> 
     <script src="anniversary.js"></script>
 </body>
 </html>

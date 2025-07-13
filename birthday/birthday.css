@@ -1,119 +1,308 @@
-/* Birthday specific background and theme adjustments */
-body.birthday-theme .wish-generator-main {
-    background-image: url('birthday-bg.jpg'); /* Background specific to Birthday */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Parallax effect */
+/* DevByHans-Wishes/birthday/birthday.css (or where your button styles are defined) */
+
+/* General Body and Main container adjustments if needed for theme */
+body.birthday-theme {
+    /* Existing background image, etc. */
 }
 
-/* Adjust colors for birthday theme */
-body.birthday-theme .wish-generator-main .container {
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white for content */
+.wish-page-body main.wish-generator-main {
+    /* Padding adjustments if needed */
+    padding: 20px; /* Example, adjust as per your layout */
 }
 
-body.birthday-theme h1,
-body.birthday-theme .input-form label {
-    color: var(--secondary-color); /* Darker pink for headings/labels */
+/* Header and Footer styles (assuming these are global or consistent) */
+header, footer {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 10px 20px;
+    z-index: 1000; /* Ensure header/footer are above other content if overlapping */
+    position: relative; /* For z-index to work */
 }
 
-body.birthday-theme .input-form button {
-    background-color: var(--primary-color); /* Bright pink button */
+.header-container, .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Optional: Constrain width */
+    margin: 0 auto; /* Center content */
 }
 
-body.birthday-theme .input-form button:hover {
-    background-color: var(--secondary-color); /* Darker pink on hover */
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+    vertical-align: middle; /* Align image with text */
 }
 
-body.birthday-theme .wish-card {
-    border: 2px solid var(--primary-color); /* Pink border for card */
+.logo a {
+    display: flex; /* Make logo and text align */
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
-body.birthday-theme .wish-card .wish-text {
-    color: var(--dark-text); /* Standard text color */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-body.birthday-theme .wish-card .signature {
-    color: var(--primary-color); /* Pink signature */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
 }
 
-/* WhatsApp and Copy Link buttons */
+nav a:hover {
+    color: #ffeb3b; /* A subtle hover effect */
+    background-color: rgba(255,255,255,0.1);
+}
+
+main {
+    text-align: center;
+    color: #333;
+    padding: 20px;
+    min-height: calc(100vh - 120px); /* Adjust based on header/footer height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.container {
+    width: 90%;
+    max-width: 900px; /* Max width for main content */
+    margin: 0 auto;
+}
+
+h1 {
+    color: #e91e63; /* Pink heading */
+    margin-bottom: 30px;
+    font-size: clamp(1.8em, 4vw, 2.8em);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.input-form {
+    background: rgba(255,255,255,0.95); /* Slightly less transparent */
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 500px; /* Wider form */
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* More prominent shadow */
+    display: flex; /* Make it a flex container for consistent layout */
+    flex-direction: column;
+    gap: 20px; /* Space between form groups */
+}
+
+.input-form .form-group {
+    margin-bottom: 0; /* Remove default margin as we use gap */
+    text-align: left;
+}
+
+.input-form label {
+    display: block;
+    margin-bottom: 8px; /* More space below label */
+    font-weight: 600;
+    color: #555;
+    font-size: 1.05em;
+}
+
+.input-form input,
+.input-form textarea {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 12px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-form input:focus,
+.input-form textarea:focus {
+    border-color: #e91e63; /* Focus highlight */
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.2);
+    outline: none;
+}
+
+.input-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.btn {
+    background: #e91e63; /* Pink */
+    color: #fff; /* White text for button */
+    border: none;
+    padding: 14px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+    align-self: center; /* Center button in flex container */
+    margin-top: 10px; /* Add some space above the button */
+}
+
+.btn:hover {
+    background: #c2185b; /* Darker pink on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+}
+
+.wish-card {
+    background: rgba(255,255,255,0.98); /* Less transparent */
+    padding: 40px;
+    margin: 40px auto; /* More margin */
+    max-width: 600px; /* Wider card */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Stronger shadow */
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    text-align: center;
+    position: relative; /* For animation */
+}
+
+.wish-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wish-text {
+    font-size: clamp(1.2em, 2.5vw, 1.8em); /* Responsive font size */
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 25px;
+    white-space: pre-line; /* Preserve line breaks from JS */
+}
+
+.signature {
+    font-size: clamp(0.9em, 1.5vw, 1.1em);
+    color: #e91e63;
+    font-weight: 600;
+    text-align: right;
+    display: block; /* Ensure it takes full width for right align */
+    margin-top: 20px;
+}
+
 .wish-actions {
     display: flex;
-    justify-content: center;
     gap: 15px;
+    justify-content: center;
     margin-top: 30px;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
 }
 
 .wish-actions button {
-    display: inline-flex;
+    display: inline-flex; /* Align icon and text */
     align-items: center;
-    gap: 8px;
-    padding: 12px 25px;
-    font-size: 1.05em;
+    gap: 8px; /* Space between icon and text */
     border: none;
+    color: #fff;
+    padding: 12px 25px;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.05em;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    color: white; /* Default text color for these buttons */
 }
 
-.wish-actions button img {
-    width: 22px;
-    height: 22px;
-    margin-bottom: 0;
-    filter: brightness(0) invert(1); /* Make icon white */
+.wish-actions button::before { /* Use ::before for icons, or use actual <img> tags */
+    content: ''; /* Placeholder for actual icons if you use font-awesome or svgs */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: brightness(0) invert(1); /* Make icons white if they are dark */
 }
 
 #shareWhatsappBtn {
-    background-color: #25d366; /* WhatsApp Green */
+    background: #25d366; /* WhatsApp Green */
 }
-
-#shareWhatsappBtn:hover {
-    background-color: #1da851;
-    transform: translateY(-2px);
+#shareWhatsappBtn::before {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTEyIDBDNS4zNzMgMCAwIDUuMzczIDAgMTJzNS4zNzMgMTIgMTIgMTIgMTIgLTUuMzczIDEyLTEyUzE4LjYzNyAwIDEyIDBNMTYuNjkgMTYuMTdjLS4zNzMuNzMyLS45NzkgMS4xNTYtMS42NDcgMS4zMzItLjY1NC4xNjctMS40MTMuMjU3LTIuMjc0LjI1N2MtMy42NjggMC02LjY0Ny0yLjk4LTYuNjQ3LTYuNjQ4IDAtLjY4Mi4xMTQtMS4zNC4zMi0xLjk3QzUuNDk5IDYuMDc0IDUuMTcgNS43NDcgNC44MjMgNS40MDZMNC4zOTggNS44MzMtMy42NyA4LjI4M2EuOTU5Ljk1OSAwIDAgMCAuMDI2IDEuMzY4bC44MTggLjgxOGMuNTc3LS4xMjIuOTk0LS4yNjUgMS41NTYtLjI2NS42OTUgMCAxLjIzMi40MjIgMS40OTcgMS4yNjMuMjI1LjcxOS40MzUgMi40OTQuODE4IDMuMDk2LjcwNiAxLjEzMSAyLjY3IDIuNTQgMi45NDUgMi43MjQuNzU0LjUyNCAxLjQ1OC40MzggMS43MDYuMTg4LjI0Ni0uMjQuNjg4LS45MDYgMS4wNS0xLjMzNC4zNi0uNDI5LjcxLS44NS42Ny0uOTEuNC0uMDYxLjQyOC0uMDczLjczMi0uMDczLjI5OCAwIC43MjUgMCAuNzI1LjI3OS4wMzYuMzEuMzQ2LjQ3Mi41OTguNjczLjI1Mi4yMDEuNTc3LjI2OS42NjkuMzM2LjA5Mi4wNjYuMTMuMTI4LjI2MS4xNjMuMTMuMDQ0LjM1NC4wNjcuNDU0LjA3Ny4xMi4wMTIuMjQxLjAyMS4yOTcuMDQ2bDEuMTY4LS42MTRjLjIyMi0uMTIuNDI3LS4yNTYuNjA3LS40NDguMzQ5LS4zNy41MzItLjg1Mi41MzItMS40MTItLjAwMS0uMjE2LS4wOTMtLjMyMy0uNDItLjQ5OC0uMjEzLS4xMjEtLjM3OS0uMjg5LS41Mi0uNDM5LS4xNDEtLjE1LS4yNTYtLjI1OS0uMzMzLS4zNTQtLjAyNi0uMDExLS4wNDMtLjA0My0uMDcxLS4wNzhsLS44NzktLjY4M2MuMTQtLjE4LjMwMS0uMzU0LjQ1NC0uNTE0LjE1NC0uMTYxLjI5NC0uMjYxLjQyOC0uMzMzLjEzNS0uMDczLjIyNC0uMTU2LjI5Ni0uMTk5LjA3My0uMDQ0LjEyNy0uMDcyLjI1OS0uMTIxLjEzMy0uMDQ3LjM0OS0uMDcuNDk0LS4wNjYuMTQ1LjAxLjI5Mi4wMjUuMzIyLjA0LjAzLjAxNi4wNjQuMDM3LjE0Ny4wNjdsMS4xMDQgLjQ4NmMuMTk3LjA5Ny4zNjkuMTkuNTE0LjMyOS4zMzEuMjg0LjY1NS42MjguNjU1IDEuMTExIDAgLjM2Ny0uMTI0Ljc2NC0uMzczIDEuMTM0eiIvPjwvc3ZnPg=='); /* WhatsApp icon SVG */
 }
 
 #copyLinkBtn {
-    background-color: #007bff; /* Blue for Copy */
+    background: #007bff; /* Blue */
+}
+#copyLinkBtn::before {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzAwMDAwMCIgZD0iTTE2IDMuNzVMMTQuMjUgMkgyLjA5Yy0uMTgxIDAtLjM1OC4wNjgtLjQ5NS4yMDVMLjIwNSA1LjI5NWMtLjEzNy4xMzctLjIwNS4zMTQtLjIwNS40OTV2MTYuMDhjMCAuMTgxLjA2OC4zNTguMjA1LjQ5NWwuODQ0Ljg0NGMuMTM3LjEzNy4zMTQuMjA1LjQ5NS4yMDVoMTIuMzA1Yy4xODEgMCAuMzU4LS4wNjguNDk1LS4yMDVsLjg0NC0uODQ0Yy4xMzctLjEzNy4yMDUtLjMxNC4yMDUtLjQ5NVY2LjI1YzAtLjQ1Mi0uMzI2LS44MjctLjc0LS45MjdsLjAyLS4wMDUtLjAyLS4wMDUtLjAxOS0uMDA0LS4wMjMtLjAwN2wtMS41LS41QzE2LjQ3IDEuNzUgMTYuMDczIDEuNzUgMTYgMS43NXpNMTEgMjFoLTVsLTUtMi42NjcgNi40NjQtNi43MjRsNC42NzYgNC44NTdMMTEuNzU1IDIxek05LjI1IDYuNTk5TDE1IDIuNzUzVjYuNzU1bC01LjI2MiAzLjUzNi0uNDg4LS40Mjd6TTkgNy42MTZMNCAxMy44MzJWNUw5IDcuNjE2eiIvPjwvc3ZnPg=='); /* Copy icon SVG */
 }
 
-#copyLinkBtn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-}
 
-/* Mobile adjustments specific to wish generator */
 @media (max-width: 768px) {
-    body.wish-page-body .wish-generator-main .container {
-        padding: 30px 20px;
-        max-width: 95%;
-    }
-    body.wish-page-body h1 {
+    h1 {
         font-size: 2em;
     }
-    .wish-card .wish-text {
+    .input-form {
+        padding: 20px;
+        max-width: 90%;
+    }
+    .wish-card {
+        padding: 25px;
+        max-width: 90%;
+    }
+    .wish-text {
         font-size: 1.1em;
     }
-    .wish-actions {
-        flex-direction: column;
-        gap: 10px;
+    .signature {
+        font-size: 0.9em;
     }
     .wish-actions button {
         width: 100%;
-        max-width: 250px; /* Limit width even if flex-direction column */
+        max-width: 250px;
     }
 }
 
 @media (max-width: 480px) {
-    body.wish-page-body h1 {
-        font-size: 1.8em;
+    header, footer {
+        padding: 10px;
     }
-    .wish-card .wish-text {
+    .logo a {
         font-size: 1em;
     }
-    .input-form button {
-        padding: 10px 30px;
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    nav {
+        width: 100%; /* For responsive nav */
+        position: absolute;
+        top: 60px; /* Below header */
+        left: 0;
+        background: rgba(0,0,0,0.8);
+        padding: 10px 0;
+        display: none; /* Hidden by default for small screens, to be toggled by JS if you add a hamburger menu */
+    }
+    nav.active {
+        display: flex;
+        flex-direction: column;
+    }
+    .hamburger { /* If you implement a hamburger menu */
+        display: block;
+        cursor: pointer;
+        padding: 5px;
+    }
+    .input-form, .wish-card {
+        padding: 15px;
+    }
+    .wish-text {
         font-size: 1em;
+    }
+    .btn {
+        font-size: 1em;
+        padding: 10px 20px;
     }
 }

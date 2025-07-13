@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 Shravan Somwar Special Wishes - DevByHans 🙏</title>
+    <meta name="description" content="Create & Share Shravan Somwar Special Mahadev Wishes with your name. Generate heartfelt blessings for Lord Shiva's holy month.">
+    <meta name="keywords" content="Shravan Somwar, Sawan, Lord Shiva, Har Har Mahadev, Shivling, Hindu wishes, spiritual, bhakti, Om Namah Shivay">
+
+    <meta property="og:title" content="🌿 Shravan Somwar Special Wishes - DevByHans 🙏">
+    <meta property="og:description" content="Create & Share Shravan Somwar Special Mahadev Wishes with your name. Generate heartfelt blessings for Lord Shiva's holy month.">
+    <meta property="og:image" content="https://dev-by-hans-wishes.vercel.app/assets/images/shivlin.png">
+    <meta property="og:url" content="https://dev-by-hans-wishes.vercel.app/sawan/sawan.html">
+    <meta property="og:type" content="website">
+
+    <link rel="canonical" href="https://dev-by-hans-wishes.vercel.app/sawan/sawan.html">
+    <link rel="icon" href="https://dev-by-hans-wishes.vercel.app/assets/images/favicon.ico" type="image/x-icon">
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style">
+
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="sawan.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="https://dev-by-hans-wishes.vercel.app/index.html">
+                    <img src="../assets/images/devbyhans_logo.png" alt="DevByHans Logo"> DevByHans
+                </a>
+            </div>
+            <nav>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="https://dev-by-hans-wishes.vercel.app/index.html">Home</a></li>
+                    <li><a href="https://dev-by-hans-wishes.vercel.app/about.html">About</a></li>
+                    <li><a href="https://dev-by-hans-wishes.vercel.app/privacy.html">Privacy</a></li>
+                    <li><a href="https://dev-by-hans-wishes.vercel.app/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <audio id="chantingAudio" src="/sawan/assets/audio/om-namah-shivay.mp3" loop preload="auto"></audio>
+
+    <div id="loader-screen">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>🙏 ओम नमः शिवाय... Loading 🙏</p>
+        </div>
+    </div>
+
+    <div class="belpatra-container">
+        <span class="belpatra belpatra-1"></span>
+        <span class="belpatra belpatra-2"></span>
+        <span class="belpatra belpatra-3"></span>
+        <span class="belpatra belpatra-4"></span>
+        <span class="belpatra belpatra-5"></span>
+        <span class="belpatra belpatra-6"></span>
+        <span class="belpatra belpatra-7"></span>
+        <span class="belpatra belpatra-8"></span>
+    </div>
+
+    <div class="diya-container">
+        <div class="diya"></div>
+    </div>
+
+    <div class="container" id="main-content">
+        <h1 class="main-heading">🌿 श्रावण सोमवार स्पेशल 🌿</h1>
+
+        <div class="card" id="countdown-card">
+            <h2>अगले श्रावण सोमवार तक:</h2>
+            <div id="countdown" class="countdown">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <small>दिन</small>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <small>घंटे</small>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <small>मिनट</small>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <small>सेकंड</small>
+                </div>
+            </div>
+        </div>
+
+        <div id="input-section" class="card">
+            <div class="input-group">
+                <label for="senderName">आपका नाम (प्रेषक):</label>
+                <input type="text" id="senderName" placeholder="अपना नाम यहाँ लिखें" required>
+            </div>
+            <div class="input-group">
+                <label for="senderImage">अपनी फोटो (वैकल्पिक):</label>
+                <input type="file" id="senderImage" accept="image/png, image/jpeg">
+                <div id="image-preview" class="image-preview"></div>
+            </div>
+            <button id="generateWishBtn">शुभकामना जनरेट करें</button>
+        </div>
+
+        <div id="wish-card" class="card hidden">
+            <div class="wish-header">
+                <img id="generatedUserPhoto" src="" alt="प्रेषक की फोटो" class="generated-user-photo hidden">
+                <p id="generatedSenderName" class="generated-sender-name"></p>
+            </div>
+            <p id="wishText" class="wish-text"></p>
+            <div class="share-buttons">
+                <button id="whatsappShareBtn" class="share-btn whatsapp-btn">
+                    <span class="icon">&#x1F4AD;</span> WhatsApp पर शेयर करें
+                </button>
+                <button id="copyWishBtn" class="share-btn copy-btn">
+                    <span class="icon">&#x1F4C4;</span> शुभकामना कॉपी करें
+                </button>
+            </div>
+            <button id="createAnotherBtn" class="share-btn generate-new-btn">एक और बनाएँ ✨</button>
+        </div>
+    </div>
+
+    <a href="https://t.me/DevByHansWishes" target="_blank" class="telegram-button">
+        <span class="icon">&#x2709;&#xFE0F;</span> हमारा टेलीग्राम चैनल ज्वाइन करें
+    </a>
+
+    <footer>Made by DevByHans ❤️</footer>
+
+    <script src="sawan.js"></script>
+</body>
+</html>

@@ -9,9 +9,12 @@
     
     <meta property="og:title" content="Privacy Policy - DevByHans Wishes">
     <meta property="og:description" content="Our privacy policy at DevByHans Wishes. We respect your privacy and do not store any personal data you enter into our wish generators.">
-    <meta property="og:image" content="../assets/images/og-image.jpg">
-    <meta property="og:url" content="https://www.yourwebsite.com/privacy.html"> <link rel="canonical" href="https://www.yourwebsite.com/privacy.html"> <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
-
+    <meta property="og:image" content="https://dev-by-hans-wishes.vercel.app/assets/images/og-image.jpg"> <meta property="og:url" content="https://dev-by-hans-wishes.vercel.app/privacy.html"> 
+    
+    <link rel="canonical" href="https://dev-by-hans-wishes.vercel.app/privacy.html"> 
+    <link rel="icon" href="https://dev-by-hans-wishes.vercel.app/assets/images/favicon.ico" type="image/x-icon"> <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" as="style">
+    
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -42,7 +45,7 @@
     <main class="static-page-main">
         <div class="container">
             <h1>Privacy Policy</h1>
-            <p>At DevByHans Wishes, accessible from yourwebsite.com (REPLACE with your domain), your privacy is our utmost priority. This Privacy Policy document outlines the types of information that are processed by DevByHans Wishes and how we handle it. We are committed to safeguarding your personal information and ensuring a transparent approach to data handling.</p>
+            <p>At DevByHans Wishes, accessible from <a href="https://dev-by-hans-wishes.vercel.app/" target="_blank" rel="noopener noreferrer">dev-by-hans-wishes.vercel.app</a>, your privacy is our utmost priority. This Privacy Policy document outlines the types of information that are processed by DevByHans Wishes and how we handle it. We are committed to safeguarding your personal information and ensuring a transparent approach to data handling.</p>
             <p>Our website primarily functions as a client-side wish generator. This means that any input you provide, such as names or custom messages, is processed directly within your web browser to generate the wish card. **We do not store, collect, or transmit any of this personalized input data on our servers.** Your wishes are generated and exist ephemerally within your device until you choose to share them, ensuring your privacy remains intact.</p>
             <p>We do not use cookies for tracking personal identifiable information. We may, however, use basic, non-intrusive session cookies solely for essential website functionality (e.g., maintaining your preference for the duration of your visit). These are automatically deleted once you close your browser. We also do not employ web beacons, pixels, or similar technologies to gather personal data.</p>
             <p>For analytics purposes, we may utilize **Google Analytics** to understand website traffic and usage patterns (e.g., which pages are most popular, how long visitors stay). This data is anonymized and aggregated, meaning it cannot be linked back to individual users. It helps us improve our website's performance and content without compromising your personal identity. Google Analytics' use of data is governed by the Google Analytics Terms of Service and the Google Privacy Policy.</p>
@@ -52,17 +55,28 @@
             <p>This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in DevByHans Wishes. This policy is not applicable to any information collected offline or via channels other than this website.</p>
             <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions. We reserve the right to update or change our Privacy Policy at any time, and you should check this Privacy Policy periodically. Your continued use of the service after we post any modifications to the Privacy Policy on this page will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy.</p>
             <p>If you have any questions about our Privacy Policy, please do not hesitate to contact us through the Contact page.</p>
-        </div>
+            <p><em>Last updated: <span id="last-updated-date">July 13, 2025</span></em></p> </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>Made with ❤️ by DevByHans</p>
+            <p>Made by DevByHans ❤️</p>
             <div class="footer-links">
                 <a href="https://t.me/DevByHansWishes" target="_blank" rel="noopener noreferrer">Telegram Channel</a>
             </div>
         </div>
     </footer>
     <script src="index.js"></script>
-    </body>
+    <script>
+        // Optional: Dynamically update the "Last updated" date
+        document.addEventListener('DOMContentLoaded', () => {
+            const lastUpdatedElement = document.getElementById('last-updated-date');
+            if (lastUpdatedElement) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const today = new Date();
+                lastUpdatedElement.textContent = today.toLocaleDateString('en-US', options);
+            }
+        });
+    </script>
+</body>
 </html>

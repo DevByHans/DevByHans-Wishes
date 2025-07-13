@@ -9,9 +9,12 @@
     
     <meta property="og:title" content="Terms & Conditions - DevByHans Wishes">
     <meta property="og:description" content="Terms and Conditions for using DevByHans Wishes, outlining user responsibilities and site usage guidelines.">
-    <meta property="og:image" content="../assets/images/og-image.jpg">
-    <meta property="og:url" content="https://www.yourwebsite.com/terms.html"> <link rel="canonical" href="https://www.yourwebsite.com/terms.html"> <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
-
+    <meta property="og:image" content="https://dev-by-hans-wishes.vercel.app/assets/images/og-image.jpg"> <meta property="og:url" content="https://dev-by-hans-wishes.vercel.app/terms.html"> 
+    
+    <link rel="canonical" href="https://dev-by-hans-wishes.vercel.app/terms.html"> 
+    <link rel="icon" href="https://dev-by-hans-wishes.vercel.app/assets/images/favicon.ico" type="image/x-icon"> <link rel="preload" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" as="style">
+    
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -42,7 +45,7 @@
     <main class="static-page-main">
         <div class="container">
             <h1>Terms & Conditions</h1>
-            <p>Welcome to DevByHans Wishes. These terms and conditions outline the rules and regulations for the use of DevByHans Wishes' Website, located at yourwebsite.com (REPLACE with your domain).</p>
+            <p>Welcome to DevByHans Wishes. These terms and conditions outline the rules and regulations for the use of DevByHans Wishes' Website, located at <a href="https://dev-by-hans-wishes.vercel.app/" target="_blank" rel="noopener noreferrer">dev-by-hans-wishes.vercel.app</a>.</p>
             <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use DevByHans Wishes if you do not agree to take all of the terms and conditions stated on this page.</p>
             <p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to DevByHans Wishes. "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of India.</p>
             <p>Unless otherwise stated, DevByHans Wishes and/or its licensors own the intellectual property rights for all material on DevByHans Wishes. All intellectual property rights are reserved. You may access this from DevByHans Wishes for your own personal use subjected to restrictions set in these terms and conditions. You must not:</p>
@@ -66,17 +69,28 @@
             <p>If we find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links but we are not obligated to or so or to respond to you directly.</p>
             <p>We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p>
             <p>To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website.</p>
-        </div>
+            <p><em>Last updated: <span id="last-updated-date">July 13, 2025</span></em></p> </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>Made with ❤️ by DevByHans</p>
+            <p>Made by DevByHans ❤️</p>
             <div class="footer-links">
                 <a href="https://t.me/DevByHansWishes" target="_blank" rel="noopener noreferrer">Telegram Channel</a>
             </div>
         </div>
     </footer>
     <script src="index.js"></script>
+    <script>
+        // Optional: Dynamically update the "Last updated" date
+        document.addEventListener('DOMContentLoaded', () => {
+            const lastUpdatedElement = document.getElementById('last-updated-date');
+            if (lastUpdatedElement) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const today = new Date();
+                lastUpdatedElement.textContent = today.toLocaleDateString('en-US', options);
+            }
+        });
+    </script>
 </body>
 </html>
