@@ -217,42 +217,49 @@ document.addEventListener('DOMContentLoaded', () => {
         showSection(wishCard); // Show the generated wish card
     });
 
-    // Share on WhatsApp Button
-    whatsappShareBtn.addEventListener('click', () => {
-        const sender = generatedSenderName.textContent;
-        const wish = wishTextDisplay.textContent;
-        const shareUrl = "https://yourwebsite.com/sawan.html"; // Make sure to update this to your actual URL
+// Share on WhatsApp Button
+whatsappShareBtn.addEventListener('click', () => {
+    const sender = generatedSenderName.textContent;
+    const wish = wishTextDisplay.textContent;
 
-        let message = `🌿 श्रावण सोमवार की शुभकामनाएँ! 🌿\n\n`;
-        if (sender) {
-            message += `${sender}\n`;
-        }
-        message += `\n${wish}\n\n`;
-        message += `अपनी शुभकामनाएँ यहाँ बनाएँ: ${shareUrl}`;
+    // ✅ Fix: Dynamic Clean Link
+    let shareUrl = window.location.href;
+    shareUrl = shareUrl.replace('sawan.html', 'sawan');
 
-        window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+    let message = `🌿 श्रावण सोमवार की शुभकामनाएँ! 🌿\n\n`;
+    if (sender) {
+        message += `${sender}\n`;
+    }
+    message += `\n${wish}\n\n`;
+    message += `अपनी शुभकामनाएँ यहाँ बनाएँ: ${shareUrl}`;
+
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+});
+
+// Copy Wish Button
+copyWishBtn.addEventListener('click', () => {
+    const sender = generatedSenderName.textContent;
+    const wish = wishTextDisplay.textContent;
+
+    // ✅ Fix: Dynamic Clean Link
+    let shareUrl = window.location.href;
+    shareUrl = shareUrl.replace('sawan.html', 'sawan');
+
+    let textToCopy = `🌿 श्रावण सोमवार की शुभकामनाएँ! 🌿\n\n`;
+    if (sender) {
+        textToCopy += `${sender}\n`;
+    }
+    textToCopy += `\n${wish}\n\n`;
+    textToCopy += `अपनी शुभकामनाएँ यहाँ बनाएँ: ${shareUrl}`;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        alert('शुभकामना कॉपी कर ली गई है!');
+    }).catch(err => {
+        console.error('शुभकामना कॉपी करने में विफल रहा: ', err);
+        alert('शुभकामना कॉपी नहीं हो सकी। कृपया मैन्युअल रूप से कॉपी करें।');
     });
+});
 
-    // Copy Wish Button
-    copyWishBtn.addEventListener('click', () => {
-        const sender = generatedSenderName.textContent;
-        const wish = wishTextDisplay.textContent;
-        const shareUrl = "https://yourwebsite.com/sawan.html"; // Make sure to update this to your actual URL
-
-        let textToCopy = `🌿 श्रावण सोमवार की शुभकामनाएँ! 🌿\n\n`;
-        if (sender) {
-            textToCopy += `${sender}\n`;
-        }
-        textToCopy += `\n${wish}\n\n`;
-        textToCopy += `अपनी शुभकामनाएँ यहाँ बनाएँ: ${shareUrl}`;
-
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            alert('शुभकामना कॉपी कर ली गई है!'); // Hindi for "Wish copied!"
-        }).catch(err => {
-            console.error('शुभकामना कॉपी करने में विफल रहा: ', err); // Hindi
-            alert('शुभकामना कॉपी नहीं हो सकी। कृपया मैन्युअल रूप से कॉपी करें।'); // Hindi
-        });
-    });
 
     // Create Another Wish Button
     createAnotherBtn.addEventListener('click', () => {
